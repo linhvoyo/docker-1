@@ -1,0 +1,1 @@
+docker run -it  -d --name Abathur -v /home:/root -p 3000:3000 python:2-slim bash -c "pip install Flask && python /root/app.py"
