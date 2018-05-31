@@ -72,4 +72,25 @@ docker-machine scp app.py Char:/home
 docker run -it  -d --name Abathur -v /home:/root -p 3000:3000 python:2-slim bash -c "pip install Flask && python /root/app.py"
 
 20
+#create swarm
 https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/
+#set up swarm 
+https://docs.docker.com/engine/swarm/swarm-tutorial/
+
+22
+https://docs.docker.com/engine/swarm/swarm-tutorial/add-nodes/
+
+docker-machine ssh Aiur
+&&
+    docker swarm join \
+    --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \
+    192.168.99.100:2377
+to get ^^
+you can use 
+docker swarm join-token worker
+
+use: cmd bellow to check if worker added sucessfully 
+docker node ls
+
+23
+https://docs.docker.com/network/network-tutorial-overlay/#use-an-overlay-network-for-standalone-containers
