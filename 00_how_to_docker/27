@@ -1,0 +1,1 @@
+docker service logs -f  $(docker service ps engineering-bay  | cut -d " "  -f1 | head -2 | tail -1 )
