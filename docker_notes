@@ -74,7 +74,7 @@ docker run -it  -d --name Abathur -v /home:/root -p 3000:3000 python:2-slim bash
 20
 #create swarm
 https://docs.docker.com/engine/swarm/swarm-tutorial/create-swarm/
-#set up swarm 
+#set up swarm
 https://docs.docker.com/engine/swarm/swarm-tutorial/
 
 22
@@ -86,11 +86,45 @@ docker-machine ssh Aiur
     --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c \
     192.168.99.100:2377
 to get ^^
-you can use 
+you can use
 docker swarm join-token worker
 
-use: cmd bellow to check if worker added sucessfully 
+use: cmd bellow to check if worker added sucessfully
 docker node ls
 
 23
 https://docs.docker.com/network/network-tutorial-overlay/#use-an-overlay-network-for-standalone-containers
+
+
+### 01_dockerfiles
+###ex00
+dockerfile
+FROM alpine
+
+RUN apk update && apk add vim
+
+build command
+docker build . -t vim
+
+run command
+docker run -it vim
+
+
+###ex01
+https://unixblogger.com/2017/11/08/setup-a-teamspeak-3-server-on-linux-ubuntu-debian/
+https://github.com/overshard/docker-teamspeak/blob/master/Dockerfile
+https://www.digitalocean.com/community/questions/tutorial-setup-teamspeak-server-debian-9-3
+
+Dockerfile
+FROM debian
+RUN apt-get update && apt-get install -y \
+      wget \
+      bzip2
+
+
+wget http://dl.4players.de/ts/releases/3.0.13.8/teamspeak3-server_linux_amd64-3.0.13.8.tar.bz2
+tar xfvj teamspeak3-server_linux_amd64-3.0.13.8.tar.bz2
+
+
+run command
+docker run -d -it -p=9987:9987/udp -p=10011:10011 -p=30033:30033 teamspeak
